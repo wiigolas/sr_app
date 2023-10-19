@@ -8,7 +8,9 @@ class ProgramRepository {
     int page = 1,
   }) async {
     try {
-      final Uri requestUri = Uri.parse(getProgramsUrl);
+      final Uri requestUri = Uri.parse(
+        '$getProgramsUrl&page=$page',
+      );
 
       final http.Response httpResponse = await http.get(
         requestUri,

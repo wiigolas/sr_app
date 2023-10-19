@@ -13,7 +13,9 @@ class ProgramBloc extends Bloc<ProgramEvent, ProgramState> {
     FetchProgramsEvent event,
     Emitter<ProgramState> emit,
   ) async {
-    ProgramResponse response = await programRepository.fetchPaginatedPrograms();
+    ProgramResponse response = await programRepository.fetchPaginatedPrograms(
+      page: event.page,
+    );
 
     if (response is SuccessfulProgramResponse) {
       emit(
