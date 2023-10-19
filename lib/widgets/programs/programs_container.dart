@@ -19,16 +19,35 @@ class ProgramsContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProgramBloc, ProgramState>(builder: (
-      _,
-      ProgramState state,
-    ) {
-      return GridView.count(
-        crossAxisCount: 2,
-        children: [
-          ...getPrograms(state),
-        ],
-      );
-    });
+    return BlocBuilder<ProgramBloc, ProgramState>(
+      builder: (
+        _,
+        ProgramState state,
+      ) {
+        return Stack(
+          children: [
+            InfiniteScroll(
+              scrollFunction: () {
+                context.read<ProgramBloc>().add(
+                      FetchProgramsEvent(page: state.page + 1),
+                    );
+              },
+              renderChild: (ScrollController scrollController) =>
+                  GridView.count(
+                controller: scrollController,
+                crossAxisCount: 2,
+                children: [
+                  ...getPrograms(state),
+                ],
+              ),
+            ),
+            if (state is ProgramLoadingState)
+              const Center(
+                child: CircularProgressIndicator(),
+              ),
+          ],
+        );
+      },
+    );
   }
 }
