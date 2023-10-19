@@ -9,7 +9,7 @@ final GoRouter routerConfig = GoRouter(
       },
       routes: <RouteBase>[
         GoRoute(
-          path: 'program',
+          path: 'program/:id',
           builder: (BuildContext context, GoRouterState state) {
             return const ProgramScreen();
           },
