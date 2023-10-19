@@ -1,3 +1,2 @@
-export 'program_body.dart';
-export 'program_card.dart';
-export 'programs_container.dart';
+export 'program/program_barrel.dart';
+export 'programs/programs_barrel.dart';

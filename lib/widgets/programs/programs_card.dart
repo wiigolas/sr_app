@@ -1,9 +1,9 @@
 import 'package:sr_app/exports/exports.dart';
 
-class ProgramCard extends StatelessWidget {
+class ProgramsCard extends StatelessWidget {
   final Program program;
 
-  const ProgramCard({
+  const ProgramsCard({
     required this.program,
     super.key,
   });

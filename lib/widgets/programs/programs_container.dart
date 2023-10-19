@@ -8,7 +8,7 @@ class ProgramsContainer extends StatelessWidget {
 
     for (Program program in state.programs) {
       programsList.add(
-        ProgramCard(
+        ProgramsCard(
           program: program,
         ),
       );
