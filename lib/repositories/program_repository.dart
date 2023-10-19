@@ -15,7 +15,7 @@ class ProgramRepository {
       );
 
       final Map<String, dynamic> response = json.decode(
-        httpResponse.body,
+        utf8.decode(httpResponse.bodyBytes),
       ) as Map<String, dynamic>;
 
       final List<Program> programs = <Program>[];

@@ -18,9 +18,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SafeArea(
-        child: ProgramContainer(),
+        child: ProgramsContainer(),
       ),
     );
   }

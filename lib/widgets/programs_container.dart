@@ -1,6 +1,8 @@
 import 'package:sr_app/exports/exports.dart';
 
-class ProgramContainer extends StatelessWidget {
+class ProgramsContainer extends StatelessWidget {
+  const ProgramsContainer({super.key});
+
   List<Widget> getPrograms(ProgramState state) {
     List<Widget> programsList = [];
 

@@ -11,7 +11,9 @@ final GoRouter routerConfig = GoRouter(
         GoRoute(
           path: 'program/:id',
           builder: (BuildContext context, GoRouterState state) {
-            return const ProgramScreen();
+            return ProgramScreen(
+              program: (state.extra as ProgramExtra).program,
+            );
           },
         ),
       ],
