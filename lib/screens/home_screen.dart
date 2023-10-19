@@ -11,19 +11,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<ProgramBloc>().add(FetchProgramsEvent());
+    context.read<ProgramBloc>().add(
+          const FetchProgramsEvent(),
+        );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: ElevatedButton(
-          onPressed: () => context.go('/program'),
-          child: const Text(
-            'programs',
-          ),
-        ),
+        child: ProgramContainer(),
       ),
     );
   }
