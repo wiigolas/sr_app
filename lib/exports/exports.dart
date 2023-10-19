@@ -2,6 +2,7 @@ export 'dart:convert';
 export 'package:flutter/material.dart';
 
 // PACKAGES
+export 'package:assets_audio_player/assets_audio_player.dart';
 export 'package:bloc/bloc.dart';
 export 'package:equatable/equatable.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';

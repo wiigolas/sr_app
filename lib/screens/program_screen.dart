@@ -26,14 +26,9 @@ class _ProgramScreenState extends State<ProgramScreen> {
     return Consumer<EpisodeProvider>(
         builder: (_, EpisodeProvider provider, __) {
       return Scaffold(
-        floatingActionButton: provider.episodePlaying != null
-            ? FloatingActionButton.extended(
-                label: Text(provider.episodePlaying!.title),
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.music_note,
-                ),
-              )
+        appBar: AppBar(),
+        floatingActionButton: provider.activeEpisode
+            ? const ProgramPlayingFloatingActionButton()
             : null,
         body: SafeArea(
           child: ChangeNotifierProvider(

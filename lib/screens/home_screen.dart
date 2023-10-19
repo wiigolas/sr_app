@@ -21,15 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Consumer<EpisodeProvider>(
       builder: (_, EpisodeProvider provider, __) {
         return Scaffold(
-          floatingActionButton: provider.episodePlaying != null
-              ? FloatingActionButton.extended(
-                  backgroundColor: Colors.white,
-                  label: Text(provider.episodePlaying!.title),
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.music_note,
-                  ),
-                )
+          floatingActionButton: provider.activeEpisode
+              ? const ProgramPlayingFloatingActionButton()
               : null,
           body: const SafeArea(
             child: ProgramsContainer(),
