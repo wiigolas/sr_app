@@ -10,12 +10,15 @@ class App extends StatelessWidget {
         ...repositoryProviders,
         ...blocProviders(context: context),
       ],
-      child: MaterialApp.router(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          useMaterial3: true,
+      child: ChangeNotifierProvider(
+        create: (_) => EpisodeProvider(),
+        child: MaterialApp.router(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            useMaterial3: true,
+          ),
+          routerConfig: routerConfig,
         ),
-        routerConfig: routerConfig,
       ),
     );
   }

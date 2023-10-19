@@ -7,7 +7,6 @@ class ProgramInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ProgramProvider>(
       builder: (_, ProgramProvider provider, __) {
-        print(provider.program.id);
         return Column(
           children: [
             Padding(
