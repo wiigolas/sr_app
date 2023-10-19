@@ -1,14 +1,20 @@
-import 'package:flutter/material.dart';
+import 'package:sr_app/exports/exports.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Container(
-          color: Colors.red,
+    return MultiProvider(
+      providers: [
+        ...repositoryProviders,
+        ...blocProviders(context: context),
+      ],
+      child: Scaffold(
+        body: SafeArea(
+          child: Container(
+            color: Colors.red,
+          ),
         ),
       ),
     );
