@@ -11,13 +11,18 @@ class ProgramPlayingFloatingActionButton extends StatelessWidget {
           heroTag: 'ProgramPlayingFloatingActionButton',
           backgroundColor: Colors.white,
           label: Text(
-            episodeTitle(provider.episodePlaying?.title ??
-                provider.pausedEpisode!.title),
+            episodeTitle(
+              provider.episodePlaying?.title ?? provider.pausedEpisode!.title,
+            ),
             overflow: TextOverflow.ellipsis,
           ),
-          onPressed: () {},
-          icon: const Icon(
-            Icons.music_note,
+          onPressed: () {
+            provider.setEpisodePlaying(
+              episode: provider.episodePlaying ?? provider.pausedEpisode!,
+            );
+          },
+          icon: Icon(
+            provider.episodePlaying != null ? Icons.pause : Icons.play_arrow,
           ),
         );
       },

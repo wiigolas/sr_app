@@ -12,6 +12,7 @@ class EpisodeProvider extends ChangeNotifier {
   bool get activeEpisode => episodePlaying != null || pausedEpisode != null;
 
   setEpisodePlaying({required Episode episode}) {
+    print(episode.id);
     final bool newEpisode =
         episodePlaying?.id != episode.id && pausedEpisode?.id != episode.id;
 
