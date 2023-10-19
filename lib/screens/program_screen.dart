@@ -23,15 +23,27 @@ class _ProgramScreenState extends State<ProgramScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: ChangeNotifierProvider(
-          create: (_) => ProgramProvider(
-            program: widget.program,
+    return Consumer<EpisodeProvider>(
+        builder: (_, EpisodeProvider provider, __) {
+      return Scaffold(
+        floatingActionButton: provider.episodePlaying != null
+            ? FloatingActionButton.extended(
+                label: Text(provider.episodePlaying!.title),
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.music_note,
+                ),
+              )
+            : null,
+        body: SafeArea(
+          child: ChangeNotifierProvider(
+            create: (_) => ProgramProvider(
+              program: widget.program,
+            ),
+            child: const ProgramBody(),
           ),
-          child: const ProgramBody(),
         ),
-      ),
-    );
+      );
+    });
   }
 }

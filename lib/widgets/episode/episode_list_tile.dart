@@ -19,12 +19,14 @@ class EpisodeListTile extends StatelessWidget {
           shadowColor: Colors.grey,
           child: ListTile(
             onTap: () {
-              provider.setIsPlaying(episodeId: episode.id);
+              provider.setEpisodePlaying(episode: episode);
             },
             leading: Image.network(episode.image),
             title: Text(episode.title),
             trailing: Icon(
-              provider.isPlaying == episode.id ? Icons.pause : Icons.play_arrow,
+              provider.episodePlaying?.id == episode.id
+                  ? Icons.pause
+                  : Icons.play_arrow,
             ),
           ),
         ),

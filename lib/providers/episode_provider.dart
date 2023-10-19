@@ -1,12 +1,12 @@
 import 'package:sr_app/exports/exports.dart';
 
 class EpisodeProvider extends ChangeNotifier {
-  int? isPlaying;
+  Episode? episodePlaying;
 
   EpisodeProvider();
 
-  setIsPlaying({required int episodeId}) {
-    isPlaying = isPlaying != episodeId ? episodeId : null;
+  setEpisodePlaying({required Episode episode}) {
+    episodePlaying = episodePlaying != episode ? episode : null;
     notifyListeners();
   }
 }

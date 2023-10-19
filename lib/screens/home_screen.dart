@@ -18,10 +18,24 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
-        child: ProgramsContainer(),
-      ),
+    return Consumer<EpisodeProvider>(
+      builder: (_, EpisodeProvider provider, __) {
+        return Scaffold(
+          floatingActionButton: provider.episodePlaying != null
+              ? FloatingActionButton.extended(
+                  backgroundColor: Colors.white,
+                  label: Text(provider.episodePlaying!.title),
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.music_note,
+                  ),
+                )
+              : null,
+          body: const SafeArea(
+            child: ProgramsContainer(),
+          ),
+        );
+      },
     );
   }
 }
