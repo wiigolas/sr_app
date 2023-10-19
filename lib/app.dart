@@ -10,12 +10,12 @@ class App extends StatelessWidget {
         ...repositoryProviders,
         ...blocProviders(context: context),
       ],
-      child: Scaffold(
-        body: SafeArea(
-          child: Container(
-            color: Colors.red,
-          ),
+      child: MaterialApp.router(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          useMaterial3: true,
         ),
+        routerConfig: routerConfig,
       ),
     );
   }

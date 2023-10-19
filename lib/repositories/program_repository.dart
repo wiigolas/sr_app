@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:http/http.dart' as http;
 import 'package:sr_app/exports/exports.dart';
 
@@ -12,9 +14,21 @@ class ProgramRepository {
         requestUri,
       );
 
-      print(httpResponse.body);
+      final Map<String, dynamic> response = json.decode(
+        httpResponse.body,
+      ) as Map<String, dynamic>;
 
-      return SuccessfulProgramResponse();
+      final List<Program> programs = <Program>[];
+
+      for (Map<String, dynamic> program in response['programs']) {
+        programs.add(
+          Program.fromMap(program),
+        );
+      }
+
+      return SuccessfulProgramResponse(
+        programs: programs,
+      );
     } catch (_) {
       return FailedProgramResponse();
     }

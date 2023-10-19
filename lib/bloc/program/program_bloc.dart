@@ -6,13 +6,21 @@ class ProgramBloc extends Bloc<ProgramEvent, ProgramState> {
   ProgramBloc({
     required this.programRepository,
   }) : super(const ProgramState()) {
-    on<FetchProgramEvent>(_onFetchProgramEvent);
+    on<FetchProgramsEvent>(_onFetchProgramsEvent);
   }
 
-  void _onFetchProgramEvent(
-    FetchProgramEvent event,
+  void _onFetchProgramsEvent(
+    FetchProgramsEvent event,
     Emitter<ProgramState> emit,
   ) async {
-    programRepository.fetchPaginatedPrograms();
+    ProgramResponse response = await programRepository.fetchPaginatedPrograms();
+
+    if (response is SuccessfulProgramResponse) {
+      emit(
+        state.update(
+          programs: response.programs,
+        ),
+      );
+    }
   }
 }

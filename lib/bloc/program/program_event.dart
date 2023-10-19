@@ -8,4 +8,10 @@ abstract class ProgramEvent extends Equatable {
   const ProgramEvent();
 }
 
-class FetchProgramEvent extends ProgramEvent {}
+class FetchProgramsEvent extends ProgramEvent {
+  final int page;
+
+  const FetchProgramsEvent({
+    this.page = 1,
+  });
+}

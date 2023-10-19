@@ -1,7 +1,13 @@
+import 'package:sr_app/exports/exports.dart';
+
 abstract class ProgramResponse {}
 
 class SuccessfulProgramResponse implements ProgramResponse {
-  SuccessfulProgramResponse();
+  final List<Program> programs;
+
+  SuccessfulProgramResponse({
+    required this.programs,
+  });
 }
 
 class FailedProgramResponse implements ProgramResponse {
