@@ -13,30 +13,34 @@ class ProgramBloc extends Bloc<ProgramEvent, ProgramState> {
     FetchProgramsEvent event,
     Emitter<ProgramState> emit,
   ) async {
-    final ProgramState prevState = state;
-    emit(
-      ProgramLoadingState(
-        state: prevState,
-      ),
-    );
-
-    ProgramResponse response = await programRepository.fetchPaginatedPrograms(
-      page: event.page,
-    );
-
-    if (response is SuccessfulProgramResponse) {
-      List<Program> programs = event.page == 1
-          ? response.programs
-          : [
-              ...prevState.programs,
-              ...response.programs,
-            ];
-
+    if (event.page <= state.totalPages) {
+      final ProgramState prevState = state;
       emit(
-        prevState.update(
-          programs: programs,
+        ProgramLoadingState(
+          state: prevState,
         ),
       );
+
+      ProgramResponse response = await programRepository.fetchPaginatedPrograms(
+        page: event.page,
+      );
+
+      if (response is SuccessfulProgramResponse) {
+        List<Program> programs = event.page == 1
+            ? response.programs
+            : [
+                ...prevState.programs,
+                ...response.programs,
+              ];
+
+        emit(
+          prevState.update(
+            page: response.page,
+            programs: programs,
+            totalPages: response.totalPages,
+          ),
+        );
+      }
     }
   }
 }

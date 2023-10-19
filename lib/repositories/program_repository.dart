@@ -27,7 +27,9 @@ class ProgramRepository {
       }
 
       return SuccessfulProgramResponse(
+        page: response['pagination']['page'],
         programs: programs,
+        totalPages: response['pagination']['totalpages'],
       );
     } catch (_) {
       return FailedProgramResponse();
